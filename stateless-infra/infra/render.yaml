@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: stateless-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: stateless-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: stateless-redis
+          property: connectionString
+
+databases:
+  - name: stateless-db
+    plan: free
+    databaseName: stateless_db
+    user: stateless_user
+
+  - name: stateless-redis
+    plan: free # Render Redis free tier exists? Or use internal instance. Render has Redis.
