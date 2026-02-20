@@ -7,7 +7,9 @@
         "dev": "tsx watch src/server.ts",
         "build": "tsc",
         "start": "node dist/server.js",
-        "type-check": "tsc --noEmit"
+        "type-check": "tsc --noEmit",
+        "migrate": "tsx src/database/migrate.ts",
+        "switch-to-pg": "mv src/database/schema.ts src/database/schema.sqlite.ts && mv src/database/pg-schema.ts src/database/schema.ts"
     },
     "dependencies": {
         "axios": "^1.6.2",
@@ -18,7 +20,9 @@
         "node-cron": "^3.0.3",
         "p-queue": "^8.0.1",
         "sqlite": "^5.1.1",
-        "sqlite3": "^5.1.7"
+        "sqlite3": "^5.1.7",
+        "pg": "^8.11.3",
+        "pg-pool": "^3.6.1"
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",
