@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import cron from 'node-cron';
 import coinRoutes from './routes/coins';
+import productRoutes from './routes/products';
 import { aggregatorService } from './services/aggregator';
 
 // Load environment variables
@@ -22,6 +23,7 @@ import { initDatabase } from './database/schema';
 
 // Routes
 app.use('/api/coins', coinRoutes);
+app.use('/api/products', productRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

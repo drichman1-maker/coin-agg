@@ -6,6 +6,7 @@ import CoinCard from '@/components/CoinCard';
 import SearchBar from '@/components/SearchBar';
 import FilterPanel from '@/components/FilterPanel';
 import { useWatchlist } from '@/hooks/useWatchlist';
+import { CategoryNav } from '@/components/shared-ui';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -97,10 +98,13 @@ export default function HomePage() {
             <header className={styles.header}>
                 <div className="container">
                     <div className={styles.headerContent}>
-                        <h1 className={styles.logo}>
-                            <span className={styles.logoIcon}>🪙</span>
-                            <span className="gradient-text">Coin Aggregator</span>
-                        </h1>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+                            <h1 className={styles.logo}>
+                                <span className={styles.logoIcon}>🪙</span>
+                                <span className="gradient-text">Coin Aggregator</span>
+                            </h1>
+                            <CategoryNav activeCategory="coins" />
+                        </div>
                         <p className={styles.tagline}>
                             Discover collectible coins from reputable dealers across the internet
                         </p>
